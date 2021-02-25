@@ -67,7 +67,8 @@ def days_later(num_days, day_given = ''):
 	#diff = None
 	#if num_days > len(week):
 	new_week_start = week[day_given_index:]
-	new_week_days = week * -(-num_days // len(week))
+	#new_week_days = week * -(-num_days // len(week))
+	new_week_days = week * num_days
 	new_week = new_week_start + new_week_days
 	return new_week[num_days]
 		## num_days = 20
@@ -120,9 +121,12 @@ def add_time(start, duration, day_given = ''):
 		total_hours = total_hours + total_mins['add_one']
 
 	num_days = num_days_later(total_hours)
+
 	total_hours_between_days = get_hours_between_days(num_days)
 	
 	new_hours = total_hours - total_hours_between_days
+
+ 	print(new_hours, total_hours, total_hours_between_days, num_days)	
 
 	hours = format_hours(new_hours)
 
@@ -180,5 +184,11 @@ def add_time(start, duration, day_given = ''):
 #print k, "\nreturn 2:59 AM, Sunday (next day)\n"
 #print l, "\nreturn 12:04 AM, Friday (2 days later)\n"
 
+#l = add_time("11:55 AM", "3:12")
+#print l, "\nreturn 3:07 PM \n"
 
 
+j = add_time("2:59 AM", "24:00", "saturDay")
+print (j, '''
+return: 2:59 AM, Sunday (next day)
+''')
